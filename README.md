@@ -79,23 +79,13 @@ cd workdir
 git clone https://github.com/EasyRPG/buildscripts
 cd buildscripts
 cd emscripten
-./0_build_everything.sh
+USE_WASM_SIMD=1 BUILD_LIBLCF=1 ./0_build_everything.sh
 cd emsdk-portable
 source ./emsdk_env.sh
 ```
 
-3) Build liblcf
-```
-cd ~/workdir
-git clone https://github.com/EasyRPG/liblcf
-cd liblcf
-export EM_PKG_CONFIG_PATH=$HOME/workdir/buildscripts/emscripten/lib/pkgconfig
-autoreconf -fi
-emconfigure ./configure --prefix=$HOME/workdir/buildscripts/emscripten --disable-shared
-make install
-```
+3) Build ynoclient
 
-4) Build ynoclient
 ```
 cd ~/workdir
 git clone https://github.com/ynoproject/ynoclient
